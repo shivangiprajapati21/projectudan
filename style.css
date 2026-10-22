@@ -1547,3 +1547,296 @@ select {
     }
 
 }
+/* ================= JS FEATURES ================= */
+
+.udaan-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    opacity: 0;
+    transition: .25s ease;
+}
+
+.udaan-modal.show {
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 15, 30, .72);
+    backdrop-filter: blur(8px);
+}
+
+.modal-box {
+    width: min(500px, 90%);
+    padding: 35px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -45%);
+
+    background: white;
+    border-radius: 25px;
+
+    box-shadow: 0 30px 100px rgba(0,0,0,.25);
+
+    transition: .3s;
+}
+
+.udaan-modal.show .modal-box {
+    transform: translate(-50%, -50%);
+}
+
+.modal-close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f2eff6;
+    color: #333;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.modal-icon {
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    background: #eee9ff;
+    border-radius: 17px;
+
+    font-size: 28px;
+}
+
+.modal-label {
+    display: block;
+    margin-top: 20px;
+
+    color: #7357d9;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.modal-box h2 {
+    margin-top: 8px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 35px;
+}
+
+.modal-box > p {
+    margin-top: 12px;
+
+    color: #777180;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.modal-solution {
+    margin-top: 22px;
+    padding: 18px;
+
+    background: #f4f8e8;
+    border-radius: 15px;
+}
+
+.modal-solution span {
+    color: #819d35;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.modal-solution p {
+    margin-top: 7px;
+
+    color: #555;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.modal-action {
+    display: inline-block;
+    margin-top: 22px;
+
+    padding: 12px 18px;
+
+    background: #171225;
+    color: white;
+
+    border-radius: 50px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.success-message {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 18px;
+    padding: 15px;
+
+    background: #f4f8e8;
+    border: 1px solid #dce8b9;
+    border-radius: 15px;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: .3s;
+}
+
+.success-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.success-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #b9d66b;
+    color: #171225;
+
+    font-weight: 800;
+}
+
+.success-message strong {
+    color: #30351d;
+    font-size: 12px;
+}
+
+.success-message p {
+    margin-top: 3px;
+    color: #777;
+    font-size: 10px;
+}
+
+.notification {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 13px 18px;
+
+    background: #171225;
+    color: white;
+
+    border-radius: 50px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+
+    transform: translateY(20px);
+    opacity: 0;
+
+    transition: .3s;
+
+    font-size: 11px;
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.notification-dot {
+    width: 22px;
+    height: 22px;
+
+    display: grid;
+    place-items: center;
+
+    background: #b9d66b;
+    color: #171225;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-links a.active {
+    color: #7357d9;
+}
+
+.back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    z-index: 9000;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #7357d9;
+    color: white;
+
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition: .3s;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@media (max-width: 650px) {
+
+    .modal-box {
+        padding: 25px;
+    }
+
+    .notification {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        justify-content: center;
+    }
+
+}
