@@ -1,1 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Project UDAAN | From Problems to Solutions</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+    <div class="logo">
+        <span>✦</span> UDAAN
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#problems">Problems</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#voice">Your Voice</a>
+    </nav>
+
+    <a href="#voice" class="nav-btn">Share Your Voice →</a>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-badge">
+            ✨ A Student-Led Campus Initiative
+        </div>
+
+        <h1>
+            From Campus
+            <span>Problems</span>
+            to <em>Solutions.</em>
+        </h1>
+
+        <p>
+            Project UDAAN is a student-driven platform where we identify
+            everyday college problems, understand student voices and
+            transform ideas into meaningful solutions.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#problems" class="primary-btn">
+                Explore Problems →
+            </a>
+
+            <a href="#voice" class="secondary-btn">
+                Share Your Voice
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="floating-card card-one">
+            <span>🔍</span>
+            <div>
+                <strong>Identify</strong>
+                <small>Real Problems</small>
+            </div>
+        </div>
+
+        <div class="main-circle">
+            <div class="circle-inner">
+                <span>UDAAN</span>
+                <small>YOUR VOICE MATTERS</small>
+            </div>
+        </div>
+
+        <div class="floating-card card-two">
+            <span>💡</span>
+            <div>
+                <strong>Innovate</strong>
+                <small>Better Solutions</small>
+            </div>
+        </div>
+
+        <div class="floating-card card-three">
+            <span>🚀</span>
+            <div>
+                <strong>Transform</strong>
+                <small>Our Campus</small>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="stat">
+        <strong>01</strong>
+        <span>Listen</span>
+    </div>
+
+    <div class="stat">
+        <strong>02</strong>
+        <span>Understand</span>
+    </div>
+
+    <div class="stat">
+        <strong>03</strong>
+        <span>Innovate</span>
+    </div>
+
+    <div class="stat">
+        <strong>04</strong>
+        <span>Act</span>
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="section about" id="about">
+
+    <div class="section-label">01 — ABOUT UDAAN</div>
+
+    <div class="two-column">
+
+        <div>
+            <h2>
+                Every great change
+                <span>starts with a voice.</span>
+            </h2>
+        </div>
+
+        <div>
+            <p>
+                College life is full of opportunities, but students also
+                experience problems that often go unnoticed. From
+                infrastructure and cleanliness to communication,
+                academics and student well-being — every issue deserves
+                to be heard.
+            </p>
+
+            <p>
+                <strong>UDAAN</strong> creates a bridge between
+                <b>student voices</b> and <b>campus solutions</b>.
+                Instead of simply discussing problems, we believe in
+                understanding them and finding practical ways forward.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROBLEMS ================= -->
+
+<section class="section problems-section" id="problems">
+
+    <div class="section-label">02 — CAMPUS PROBLEMS</div>
+
+    <div class="section-heading">
+
+        <div>
+            <h2>
+                What needs to
+                <span>change?</span>
+            </h2>
+        </div>
+
+        <p>
+            Here are some common areas where students may face
+            challenges in their everyday college experience.
+        </p>
+
+    </div>
+
+
+    <div class="problem-grid">
+
+        <div class="problem-card">
+            <div class="icon">🏫</div>
+            <span class="number">01</span>
+            <h3>Infrastructure</h3>
+            <p>
+                Classrooms, laboratories, seating, washrooms and
+                other campus facilities.
+            </p>
+            <button onclick="showProblem('Infrastructure')">
+                Explore Issue →
+            </button>
+        </div>
+
+
+        <div class="problem-card featured">
+            <div class="icon">📚</div>
+            <span class="number">02</span>
+            <h3>Academic Support</h3>
+            <p>
+                Access to resources, practical learning, guidance
+                and academic support.
+            </p>
+            <button onclick="showProblem('Academic Support')">
+                Explore Issue →
+            </button>
+        </div>
+
+
+        <div class="problem-card">
+            <div class="icon">🧹</div>
+            <span class="number">03</span>
+            <h3>Cleanliness</h3>
+            <p>
+                Waste management, hygiene and maintaining a
+                cleaner campus environment.
+            </p>
+            <button onclick="showProblem('Cleanliness')">
+                Explore Issue →
+            </button>
+        </div>
+
+
+        <div class="problem-card">
+            <div class="icon">📢</div>
+            <span class="number">04</span>
+            <h3>Communication</h3>
+            <p>
+                Information about notices, events, opportunities
+                and important updates.
+            </p>
+            <button onclick="showProblem('Communication')">
+                Explore Issue →
+            </button>
+        </div>
+
+
+        <div class="problem-card">
+            <div class="icon">💻</div>
+            <span class="number">05</span>
+            <h3>Digital Access</h3>
+            <p>
+                Digital resources, internet connectivity and
+                technology-related challenges.
+            </p>
+            <button onclick="showProblem('Digital Access')">
+                Explore Issue →
+            </button>
+        </div>
+
+
+        <div class="problem-card">
+            <div class="icon">🌱</div>
+            <span class="number">06</span>
+            <h3>Campus Environment</h3>
+            <p>
+                Green spaces, sustainability and creating a
+                healthier campus.
+            </p>
+            <button onclick="showProblem('Campus Environment')">
+                Explore Issue →
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SOLUTIONS ================= -->
+
+<section class="section solutions" id="solutions">
+
+    <div class="section-label">03 — OUR APPROACH</div>
+
+    <div class="solution-intro">
+
+        <h2>
+            We don't just
+            <span>find problems.</span>
+            <br>
+            We build possibilities.
+        </h2>
+
+        <p>
+            UDAAN follows a simple four-step approach to convert
+            student concerns into actionable ideas.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+            <span>01</span>
+            <div class="step-icon">👂</div>
+            <h3>Listen</h3>
+            <p>
+                Hear what students actually experience.
+            </p>
+        </div>
+
+        <div class="step">
+            <span>02</span>
+            <div class="step-icon">🔎</div>
+            <h3>Understand</h3>
+            <p>
+                Find the root cause behind the problem.
+            </p>
+        </div>
+
+        <div class="step">
+            <span>03</span>
+            <div class="step-icon">💡</div>
+            <h3>Ideate</h3>
+            <p>
+                Develop realistic and creative solutions.
+            </p>
+        </div>
+
+        <div class="step">
+            <span>04</span>
+            <div class="step-icon">🚀</div>
+            <h3>Act</h3>
+            <p>
+                Turn ideas into meaningful campus action.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= YOUR VOICE ================= -->
+
+<section class="voice-section" id="voice">
+
+    <div class="voice-content">
+
+        <div class="section-label">04 — YOUR VOICE</div>
+
+        <h2>
+            Have an idea?
+            <br>
+            <span>Let's hear it.</span>
+        </h2>
+
+        <p>
+            Your experience can help make our campus better.
+            Tell us about a problem you face or an idea you have
+            for improvement.
+        </p>
+
+        <form id="problemForm">
+
+            <div class="input-row">
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Your Name (optional)"
+                >
+
+                <select id="category">
+                    <option value="">Select Category</option>
+                    <option>Infrastructure</option>
+                    <option>Academics</option>
+                    <option>Cleanliness</option>
+                    <option>Communication</option>
+                    <option>Digital Access</option>
+                    <option>Campus Environment</option>
+                    <option>Other</option>
+                </select>
+
+            </div>
+
+            <textarea
+                id="problemText"
+                placeholder="Tell us about the problem or idea..."
+                required
+            ></textarea>
+
+            <button type="submit" class="submit-btn">
+                Submit Your Voice ✦
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TEAM ================= -->
+
+<section class="section team">
+
+    <div class="section-label">05 — THE TEAM</div>
+
+    <div class="team-heading">
+
+        <h2>
+            Built by students,
+            <span>for students.</span>
+        </h2>
+
+        <p>
+            UDAAN is a student-led initiative created with the belief
+            that students can be the strongest agents of change
+            within their own campus.
+        </p>
+
+    </div>
+
+
+    <div class="team-grid">
+
+        <div class="team-card">
+            <div class="avatar">S</div>
+            <h3>Shivangi Prajapati</h3>
+            <p>Team Member</p>
+        </div>
+
+        <div class="team-card">
+            <div class="avatar">D</div>
+            <h3>Divyanshi Yadav</h3>
+            <p>Team Member</p>
+        </div>
+
+        <div class="team-card">
+            <div class="avatar">D</div>
+            <h3>Deeksha Saxene</h3>
+            <p>Team Member</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FINAL CTA ================= -->
+
+<section class="final-cta">
+
+    <div>
+        <span>ONE CAMPUS. MANY VOICES.</span>
+
+        <h2>
+            Together, we can
+            <em>take UDAAN.</em>
+        </h2>
+
+        <p>
+            Because a better campus doesn't happen by chance.
+            It happens when we choose to make it better.
+        </p>
+
+        <a href="#voice" class="primary-btn">
+            Be Part of UDAAN →
+        </a>
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        ✦ UDAAN
+    </div>
+
+    <p>
+        From Campus Problems to Campus Solutions.
+    </p>
+
+    <div class="footer-line"></div>
+
+    <p class="credits">
+        Designed & Developed by
+        <strong>Shivangi Prajapati</strong>,
+        <strong>Divyanshi Yadav</strong>
+        & <strong>Deeksha Saxene</strong>
+    </p>
+
+    <p class="copyright">
+        © 2026 Project UDAAN. Made with purpose & ✦
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
