@@ -615,6 +615,190 @@ console.log(
 
 console.log(
     "%cDesigned by Shivangi Prajapati, Divyanshi Yadav & Deeksha Saxene",
+
     "font-size: 12px; color: #5940ad;"
+);
+```
+```javascript
+/* =====================================================
+   CAMPUS PULSE VOTING SYSTEM
+   ===================================================== */
+
+const defaultVotes = {
+    infrastructure: 0,
+    academics: 0,
+    cleanliness: 0,
+    communication: 0
+};
+
+
+// Get saved votes
+function getVotes() {
+
+    const saved =
+        localStorage.getItem("udaanVotes");
+
+    return saved
+        ? JSON.parse(saved)
+        : { ...defaultVotes };
+}
+
+
+// Save votes
+function saveVotes(votes) {
+
+    localStorage.setItem(
+        "udaanVotes",
+        JSON.stringify(votes)
+    );
+}
+
+
+// Update complete poll
+function updatePoll() {
+
+    const votes = getVotes();
+
+    const total =
+        Object.values(votes)
+            .reduce(
+                (sum, value) => sum + value,
+                0
+            );
+
+
+    document.getElementById("totalVotes")
+        .textContent = total;
+
+
+    Object.keys(votes).forEach((category) => {
+
+        const count = votes[category];
+
+        const percentage =
+            total === 0
+                ? 0
+                : Math.round(
+                    (count / total) * 100
+                );
+
+
+        const voteText =
+            document.getElementById(
+                `votes-${category}`
+            );
+
+        const percentageText =
+            document.getElementById(
+                `percent-${category}`
+            );
+
+        const progress =
+            document.getElementById(
+                `progress-${category}`
+            );
+
+
+        if (voteText) {
+
+            voteText.textContent =
+                `${count} vote${count !== 1 ? "s" : ""}`;
+
+        }
+
+
+        if (percentageText) {
+
+            percentageText.textContent =
+                `${percentage}%`;
+
+        }
+
+
+        if (progress) {
+
+            progress.style.width =
+                `${percentage}%`;
+
+        }
+
+    });
+
+}
+
+
+// Vote function
+function vote(category) {
+
+    const alreadyVoted =
+        localStorage.getItem(
+            "udaanUserVoted"
+        );
+
+
+    if (alreadyVoted) {
+
+        showNotification(
+            "You have already voted. Thank you for sharing your voice!",
+            "info"
+        );
+
+        return;
+    }
+
+
+    const votes = getVotes();
+
+    votes[category]++;
+
+    saveVotes(votes);
+
+
+    // Remember that this browser has voted
+    localStorage.setItem(
+        "udaanUserVoted",
+        "true"
+    );
+
+
+    updatePoll();
+
+
+    // Change button state
+    const buttons =
+        document.querySelectorAll(".vote-btn");
+
+
+    buttons.forEach((button) => {
+
+        button.classList.remove("voted");
+
+        button.textContent =
+            "Vote for this issue";
+
+    });
+
+
+    const clickedButton =
+        event.currentTarget;
+
+    clickedButton.classList.add("voted");
+
+    clickedButton.textContent =
+        "✓ Your Vote";
+
+
+    showNotification(
+        "Thank you! Your vote has been recorded.",
+        "success"
+    );
+
+}
+
+
+// Load poll when page opens
+document.addEventListener(
+    "DOMContentLoaded",
+    updatePoll
 );
 ```
