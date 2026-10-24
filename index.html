@@ -4,19 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Project UDAAN | From Problems to Solutions</title>
+    <title>Project UDAAN | Campus Grievance, Tracking & Solutions</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ================= EMERGENCY SOS MODAL ================= -->
+<div id="sosModal" class="sos-modal-overlay" style="display: none;">
+    <div class="sos-modal-box">
+        <button class="sos-close-btn" onclick="toggleSosModal(false)">×</button>
+        <div class="sos-header">
+            <span class="sos-badge">🚨 CAMPUS EMERGENCY</span>
+            <h2 data-i18n="sos_title">Immediate Emergency Helplines</h2>
+            <p data-i18n="sos_subtitle">Direct contact numbers for urgent assistance on campus. Available 24/7.</p>
+        </div>
+        <div class="sos-grid">
+            <a href="tel:108" class="sos-card">
+                <div class="sos-icon">🚑</div>
+                <div>
+                    <strong>Medical / Ambulance</strong>
+                    <span>108 / Campus Dispensary</span>
+                </div>
+                <div class="sos-call">Call ↗</div>
+            </a>
+            <a href="tel:18001805522" class="sos-card">
+                <div class="sos-icon">🛡️</div>
+                <div>
+                    <strong>National Anti-Ragging Cell</strong>
+                    <span>1800-180-5522 (Toll Free)</span>
+                </div>
+                <div class="sos-call">Call ↗</div>
+            </a>
+            <a href="tel:1090" class="sos-card">
+                <div class="sos-icon">👩‍🦰</div>
+                <div>
+                    <strong>Women Safety Helpline</strong>
+                    <span>1090 (Power Line) / 112</span>
+                </div>
+                <div class="sos-call">Call ↗</div>
+            </a>
+            <a href="tel:9876543210" class="sos-card">
+                <div class="sos-icon">👮</div>
+                <div>
+                    <strong>Campus Chief Proctor & Security</strong>
+                    <span>+91 98765 43210</span>
+                </div>
+                <div class="sos-call">Call ↗</div>
+            </a>
+            <a href="tel:9876543212" class="sos-card">
+                <div class="sos-icon">⚡</div>
+                <div>
+                    <strong>Electrical & Water Emergency</strong>
+                    <span>+91 98765 43212</span>
+                </div>
+                <div class="sos-call">Call ↗</div>
+            </a>
+        </div>
+    </div>
+</div>
 
+<!-- ================= NAVBAR ================= -->
 <header class="navbar">
     <div class="nav-container">
 
@@ -26,22 +79,39 @@
         </a>
 
         <nav class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#problems">Problems</a>
-            <a href="#pulse">Campus Pulse</a>
-            <a href="#solutions">Solutions</a>
-            <a href="#voice">Your Voice</a>
+            <a href="#home" data-i18n="nav_home">Home</a>
+            <a href="#tracker" data-i18n="nav_tracker">Status Tracker ⭐</a>
+            <a href="#campus-map" data-i18n="nav_map">Campus Map</a>
+            <a href="#dashboard" data-i18n="nav_dashboard">Dashboard</a>
+            <a href="#problems" data-i18n="nav_problems">Problems</a>
+            <a href="#pulse" data-i18n="nav_pulse">Campus Pulse</a>
+            <a href="#voice" data-i18n="nav_voice">Report Grievance</a>
         </nav>
 
-        <a href="#voice" class="nav-button">Share Your Voice ↗</a>
+        <div class="nav-actions">
+            <!-- Language Switcher -->
+            <button id="langToggle" class="nav-control-btn" title="Toggle Hindi / English" onclick="toggleLanguage()">
+                🌐 <span id="langText">हिंदी</span>
+            </button>
+
+            <!-- Dark Mode Switcher -->
+            <button id="themeToggle" class="nav-control-btn" title="Toggle Dark/Light Mode" onclick="toggleTheme()">
+                <span id="themeIcon">🌙</span>
+            </button>
+
+            <!-- Emergency SOS Button -->
+            <button class="nav-sos-pill" onclick="toggleSosModal(true)" title="Campus Emergency Numbers">
+                🚨 SOS
+            </button>
+
+            <a href="#voice" class="nav-button" data-i18n="nav_cta">Submit Issue ↗</a>
+        </div>
 
     </div>
 </header>
 
 
 <!-- ================= HERO ================= -->
-
 <section class="hero" id="home">
 
     <div class="hero-glow glow-one"></div>
@@ -53,27 +123,31 @@
 
             <div class="eyebrow">
                 <span></span>
-                COLLEGE INNOVATION PROJECT
+                <span data-i18n="hero_eyebrow">COLLEGE INNOVATION & GRIEVANCE REDRESSAL</span>
             </div>
 
-            <h1>
+            <h1 data-i18n="hero_title">
                 From Campus
                 <span>Problems</span>
                 to Solutions.
             </h1>
 
-            <p class="hero-subtitle">
-                A student-powered platform where campus problems are heard,
-                understood and transformed into practical solutions.
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
+                A student-powered platform where campus grievances are reported, tracked in real-time,
+                and transformed into verified institutional solutions.
             </p>
 
             <div class="hero-buttons">
-                <a href="#problems" class="primary-button">
-                    Explore Problems →
+                <a href="#voice" class="primary-button" data-i18n="hero_btn_report">
+                    📝 Register Complaint →
                 </a>
 
-                <a href="#voice" class="secondary-button">
-                    Share Your Idea
+                <a href="#tracker" class="secondary-button" data-i18n="hero_btn_track">
+                    🔍 Track Status
+                </a>
+
+                <a href="#campus-map" class="outline-pill-button" data-i18n="hero_btn_map">
+                    🗺️ Campus Map
                 </a>
             </div>
 
@@ -85,9 +159,9 @@
                     <span>+</span>
                 </div>
 
-                <p>
+                <p data-i18n="hero_trust">
                     Built <strong>by students</strong>,
-                    for a better campus.
+                    for a transparent and better campus.
                 </p>
             </div>
 
@@ -101,7 +175,7 @@
 
             <div class="udaan-circle">
 
-                <div class="circle-small">PROJECT</div>
+                <div class="circle-small" data-i18n="hero_circle_project">PROJECT</div>
 
                 <div class="circle-title">
                     UDAAN
@@ -109,8 +183,8 @@
 
                 <div class="circle-line"></div>
 
-                <div class="circle-small">
-                    LISTEN • THINK • ACT
+                <div class="circle-small" data-i18n="hero_circle_motto">
+                    LISTEN • TRACK • RESOLVE
                 </div>
 
             </div>
@@ -118,24 +192,24 @@
             <div class="floating-card card-problem">
                 <span>⚠️</span>
                 <div>
-                    <strong>Problem Identified</strong>
-                    <small>Campus cleanliness</small>
+                    <strong data-i18n="float_problem_title">Complaint Filed</strong>
+                    <small data-i18n="float_problem_sub">Ticket #UDN-1024 (WiFi)</small>
                 </div>
             </div>
 
             <div class="floating-card card-solution">
-                <span>💡</span>
+                <span>✅</span>
                 <div>
-                    <strong>Solution Found</strong>
-                    <small>Smart waste points</small>
+                    <strong data-i18n="float_solution_title">Issue Resolved</strong>
+                    <small data-i18n="float_solution_sub">Water cooler repaired (Hostel A)</small>
                 </div>
             </div>
 
             <div class="floating-card card-voice">
                 <span>💬</span>
                 <div>
-                    <strong>Student Voice</strong>
-                    <small>342 responses</small>
+                    <strong data-i18n="float_ai_title">AI Assistant Active</strong>
+                    <small data-i18n="float_ai_sub">24/7 UDAAN Sahayak Online</small>
                 </div>
             </div>
 
@@ -146,76 +220,345 @@
 
 
 <!-- ================= IMPACT STATS ================= -->
-
 <section class="impact-section">
 
     <div class="section-container">
 
-        <div class="section-label">OUR IMPACT</div>
+        <div class="section-label" data-i18n="impact_label">LIVE IMPACT & ACCOUNTABILITY</div>
 
         <div class="impact-grid">
 
             <div class="impact-card">
-                <div class="impact-icon">👂</div>
-                <strong>500+</strong>
-                <span>Student Voices</span>
+                <div class="impact-icon">📋</div>
+                <strong id="statTotalComplaints">28</strong>
+                <span data-i18n="impact_total">Total Issues Filed</span>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">✅</div>
+                <strong id="statResolvedCount">22</strong>
+                <span data-i18n="impact_resolved">Complaints Resolved</span>
             </div>
 
             <div class="impact-card">
                 <div class="impact-icon">⚡</div>
-                <strong>24</strong>
-                <span>Issues Identified</span>
+                <strong id="statResolutionRate">86%</strong>
+                <span data-i18n="impact_rate">Resolution Rate</span>
             </div>
 
             <div class="impact-card">
-                <div class="impact-icon">💡</div>
-                <strong>18</strong>
-                <span>Ideas Generated</span>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">🚀</div>
-                <strong>08</strong>
-                <span>Solutions Proposed</span>
+                <div class="impact-icon">⏱️</div>
+                <strong>18h</strong>
+                <span data-i18n="impact_time">Avg. Turnaround</span>
             </div>
 
         </div>
 
-        <p class="demo-note">
-            * Prototype / demonstration data for project presentation.
+        <p class="demo-note" data-i18n="impact_note">
+            * Real-time metrics computed live from student complaints and administration actions.
         </p>
 
     </div>
 </section>
 
 
-<!-- ================= ABOUT ================= -->
+<!-- ================= STATUS TRACKER SECTION (PRIORITY ⭐⭐⭐⭐⭐) ================= -->
+<section class="tracker-section" id="tracker">
+    <div class="section-container">
 
+        <div class="center-heading">
+            <div class="section-label" data-i18n="tracker_label">LIVE GRIEVANCE TRACKER</div>
+            <h2 data-i18n="tracker_title">Check Complaint <span>Status in Real-Time.</span></h2>
+            <p data-i18n="tracker_subtitle">Enter your Ticket ID or choose a sample to inspect the complete resolution pipeline.</p>
+        </div>
+
+        <!-- Search Form -->
+        <div class="tracker-search-box">
+            <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input
+                    type="text"
+                    id="trackerSearchInput"
+                    placeholder="Enter Ticket ID (e.g. UDN-1024 or UDN-1028)..."
+                    aria-label="Complaint ID"
+                >
+                <button class="tracker-search-btn" onclick="handleTrackSearch()" data-i18n="tracker_btn_search">
+                    Track Complaint
+                </button>
+            </div>
+
+            <div class="tracker-chips">
+                <span data-i18n="tracker_sample_label">Quick Demo Samples:</span>
+                <button class="sample-chip" onclick="quickTrack('UDN-1024')">UDN-1024 (WiFi • In Progress)</button>
+                <button class="sample-chip" onclick="quickTrack('UDN-1028')">UDN-1028 (Water Cooler • Resolved)</button>
+                <button class="sample-chip" onclick="quickTrack('UDN-1033')">UDN-1033 (Lab Projector • Under Review)</button>
+            </div>
+        </div>
+
+        <!-- Tracker Result Display -->
+        <div id="trackerResultContainer" class="tracker-result-card" style="display: none;">
+            <!-- Content will be injected dynamically by script.js -->
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= CAMPUS MAP SECTION (PRIORITY ⭐⭐⭐⭐) ================= -->
+<section class="campus-map-section" id="campus-map">
+    <div class="section-container">
+
+        <div class="center-heading">
+            <div class="section-label" data-i18n="map_label">CAMPUS GEOLOCATION & HEATMAP</div>
+            <h2 data-i18n="map_title">Interactive <span>Campus Map.</span></h2>
+            <p data-i18n="map_subtitle">Click on any building or zone to view active complaints and report location-specific issues.</p>
+        </div>
+
+        <div class="map-layout-grid">
+
+            <!-- Interactive Vector Blueprint -->
+            <div class="map-blueprint-wrapper">
+                <div class="map-legend">
+                    <span class="legend-item"><span class="dot dot-high"></span> Critical / High</span>
+                    <span class="legend-item"><span class="dot dot-medium"></span> Pending / In Progress</span>
+                    <span class="legend-item"><span class="dot dot-resolved"></span> All Good / Resolved</span>
+                </div>
+
+                <div class="campus-canvas-container">
+                    <svg viewBox="0 0 800 520" class="campus-svg-map" id="campusSvg">
+                        <!-- Campus Ground / Roads -->
+                        <rect x="10" y="10" width="780" height="500" rx="20" fill="var(--map-ground, #ece7f5)" />
+                        
+                        <!-- Internal Walkways / Roads -->
+                        <path d="M 50 260 L 750 260" stroke="#dad2e6" stroke-width="26" stroke-linecap="round" />
+                        <path d="M 400 40 L 400 480" stroke="#dad2e6" stroke-width="26" stroke-linecap="round" />
+                        <circle cx="400" cy="260" r="50" fill="#dad2e6" />
+
+                        <!-- Zone 1: Main Admin & Exam Block -->
+                        <g class="map-building" data-building="admin" onclick="selectBuilding('admin')">
+                            <rect x="50" y="50" width="150" height="90" rx="14" class="bldg-rect" />
+                            <text x="125" y="95" class="bldg-text">ADMIN BLOCK</text>
+                            <text x="125" y="115" class="bldg-sub">Offices & Exam Cell</text>
+                            <circle cx="185" cy="65" r="12" class="pin-dot pin-resolved" />
+                            <text x="185" y="69" class="pin-count">0</text>
+                        </g>
+
+                        <!-- Zone 2: Academic Block A -->
+                        <g class="map-building" data-building="acad_a" onclick="selectBuilding('acad_a')">
+                            <rect x="230" y="50" width="140" height="90" rx="14" class="bldg-rect" />
+                            <text x="300" y="95" class="bldg-text">BLOCK A (TECH)</text>
+                            <text x="300" y="115" class="bldg-sub">Classrooms 101-310</text>
+                            <circle cx="355" cy="65" r="12" class="pin-dot pin-medium" />
+                            <text x="355" y="69" class="pin-count">1</text>
+                        </g>
+
+                        <!-- Zone 3: Central Library -->
+                        <g class="map-building" data-building="library" onclick="selectBuilding('library')">
+                            <rect x="430" y="50" width="150" height="90" rx="14" class="bldg-rect" />
+                            <text x="505" y="95" class="bldg-text">CENTRAL LIBRARY</text>
+                            <text x="505" y="115" class="bldg-sub">Reading & E-Resource</text>
+                            <circle cx="565" cy="65" r="12" class="pin-dot pin-high" />
+                            <text x="565" y="69" class="pin-count">2</text>
+                        </g>
+
+                        <!-- Zone 4: Computer Centre / IT Labs -->
+                        <g class="map-building" data-building="labs" onclick="selectBuilding('labs')">
+                            <rect x="610" y="50" width="140" height="90" rx="14" class="bldg-rect" />
+                            <text x="680" y="95" class="bldg-text">IT & AI LABS</text>
+                            <text x="680" y="115" class="bldg-sub">Lab 1 to Lab 6</text>
+                            <circle cx="735" cy="65" r="12" class="pin-dot pin-medium" />
+                            <text x="735" y="69" class="pin-count">1</text>
+                        </g>
+
+                        <!-- Zone 5: Hostel Block 1 (Boys) -->
+                        <g class="map-building" data-building="hostel_b" onclick="selectBuilding('hostel_b')">
+                            <rect x="50" y="320" width="150" height="130" rx="14" class="bldg-rect" />
+                            <text x="125" y="380" class="bldg-text">BOYS HOSTEL</text>
+                            <text x="125" y="400" class="bldg-sub">Rooms & Mess A</text>
+                            <circle cx="185" cy="335" r="12" class="pin-dot pin-high" />
+                            <text x="185" y="339" class="pin-count">2</text>
+                        </g>
+
+                        <!-- Zone 6: Student Canteen & Cafeteria -->
+                        <g class="map-building" data-building="canteen" onclick="selectBuilding('canteen')">
+                            <rect x="230" y="320" width="140" height="130" rx="14" class="bldg-rect" />
+                            <text x="300" y="380" class="bldg-text">CANTEEN PLAZA</text>
+                            <text x="300" y="400" class="bldg-sub">Dining & Stationary</text>
+                            <circle cx="355" cy="335" r="12" class="pin-dot pin-medium" />
+                            <text x="355" y="339" class="pin-count">1</text>
+                        </g>
+
+                        <!-- Zone 7: Hostel Block 2 (Girls) -->
+                        <g class="map-building" data-building="hostel_g" onclick="selectBuilding('hostel_g')">
+                            <rect x="430" y="320" width="150" height="130" rx="14" class="bldg-rect" />
+                            <text x="505" y="380" class="bldg-text">GIRLS HOSTEL</text>
+                            <text x="505" y="400" class="bldg-sub">Rooms & Garden</text>
+                            <circle cx="565" cy="335" r="12" class="pin-dot pin-resolved" />
+                            <text x="565" y="339" class="pin-count">0</text>
+                        </g>
+
+                        <!-- Zone 8: Sports Arena & Dispensary -->
+                        <g class="map-building" data-building="sports" onclick="selectBuilding('sports')">
+                            <rect x="610" y="320" width="140" height="130" rx="14" class="bldg-rect" />
+                            <text x="680" y="380" class="bldg-text">SPORTS & CLINIC</text>
+                            <text x="680" y="400" class="bldg-sub">Gym & First Aid</text>
+                            <circle cx="735" cy="335" r="12" class="pin-dot pin-resolved" />
+                            <text x="735" y="339" class="pin-count">0</text>
+                        </g>
+
+                        <!-- Centre Plaza -->
+                        <circle cx="400" cy="260" r="30" fill="var(--purple)" opacity="0.85" />
+                        <text x="400" y="265" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">UDAAN</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Building Details Inspector Card -->
+            <div class="map-inspector-card" id="mapInspector">
+                <div class="inspector-badge" id="bldgBadge">LOCATION SELECTED</div>
+                <h3 id="bldgTitle">Central Library</h3>
+                <p id="bldgDesc">2nd Floor reading hall air conditioning and high-speed Wi-Fi access points.</p>
+                
+                <div class="inspector-stat-row">
+                    <div>
+                        <strong id="bldgActiveCount">2</strong>
+                        <span>Active Issues</span>
+                    </div>
+                    <div>
+                        <strong id="bldgStatus">Action Pending</strong>
+                        <span>Current Status</span>
+                    </div>
+                </div>
+
+                <div class="inspector-issues-list" id="bldgIssueList">
+                    <!-- Issue tags injected dynamically -->
+                </div>
+
+                <button class="primary-button full-btn" onclick="reportForSelectedBuilding()" data-i18n="map_report_btn">
+                    Report Issue Here ↗
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= DASHBOARD & ADMIN CONSOLE (PRIORITY ⭐⭐⭐⭐) ================= -->
+<section class="dashboard-section" id="dashboard">
+    <div class="section-container">
+
+        <div class="dashboard-header-flex">
+            <div>
+                <div class="section-label" data-i18n="dash_label">ADMIN & STUDENT DASHBOARD</div>
+                <h2 data-i18n="dash_title">Campus Grievance <span>Analytics.</span></h2>
+                <p data-i18n="dash_subtitle">Live overview of complaints, resolution rates, and departmental response records.</p>
+            </div>
+
+            <div class="dashboard-controls-bar">
+                <!-- Admin Demo Mode Toggle -->
+                <div class="admin-mode-toggle" title="Unlock Status updating for Judges demo!">
+                    <label class="switch-label">
+                        <input type="checkbox" id="adminModeSwitch" onchange="toggleAdminMode(this.checked)">
+                        <span class="switch-slider"></span>
+                    </label>
+                    <span class="admin-label-text">
+                        <strong data-i18n="dash_admin_mode">Admin Demo Mode</strong>
+                        <small data-i18n="dash_admin_hint">(Click to resolve issues!)</small>
+                    </span>
+                </div>
+
+                <!-- Export CSV / Print Report -->
+                <button class="export-report-btn" onclick="exportGrievanceReport()" title="Export official printable report for College Administration">
+                    📄 <span data-i18n="dash_export_btn">Download Report (Print/CSV)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Filter and Search Bar -->
+        <div class="dashboard-filter-bar">
+            <div class="dash-search-wrap">
+                <span>🔎</span>
+                <input
+                    type="text"
+                    id="dashSearchQuery"
+                    placeholder="Search by ticket ID, student, or keyword..."
+                    oninput="filterDashboardTable()"
+                >
+            </div>
+
+            <div class="dash-filter-group">
+                <select id="dashCategoryFilter" onchange="filterDashboardTable()">
+                    <option value="ALL">All Categories</option>
+                    <option value="Infrastructure">Infrastructure</option>
+                    <option value="Academic Support">Academic Support</option>
+                    <option value="Cleanliness">Cleanliness</option>
+                    <option value="Hostel & Mess">Hostel & Mess</option>
+                    <option value="Digital Access">Digital & WiFi</option>
+                    <option value="Campus Security">Security & Safety</option>
+                </select>
+
+                <select id="dashStatusFilter" onchange="filterDashboardTable()">
+                    <option value="ALL">All Statuses</option>
+                    <option value="Submitted">Submitted (New)</option>
+                    <option value="Under Review">Under Review</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Complaints Table -->
+        <div class="dashboard-table-container">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Category</th>
+                        <th>Location</th>
+                        <th>Issue Summary</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Action / Manage</th>
+                    </tr>
+                </thead>
+                <tbody id="dashboardTableBody">
+                    <!-- Populated dynamically by script.js -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= ABOUT ================= -->
 <section class="about-section" id="about">
 
     <div class="section-container about-grid">
 
         <div>
 
-            <div class="section-label">WHY UDAAN?</div>
+            <div class="section-label" data-i18n="about_label">WHY UDAAN?</div>
 
-            <h2>
+            <h2 data-i18n="about_title">
                 Every campus problem
                 deserves a <span>voice.</span>
             </h2>
 
-            <p>
+            <p data-i18n="about_p1">
                 Students experience campus problems every day — from
-                infrastructure and academics to communication, cleanliness
-                and digital access.
+                infrastructure and academics to communication, cleanliness,
+                hostel maintenance and digital access.
             </p>
 
-            <p>
-                UDAAN creates a simple bridge between identifying those
-                problems and imagining realistic solutions.
+            <p data-i18n="about_p2">
+                UDAAN creates a direct bridge between identifying those
+                problems, tracking them transparently, and producing verified results.
             </p>
 
-            <a href="#voice" class="text-link">
+            <a href="#voice" class="text-link" data-i18n="about_link">
                 Become a part of UDAAN →
             </a>
 
@@ -226,17 +569,17 @@
 
             <div class="quote-mark">“</div>
 
-            <p>
+            <p data-i18n="about_quote">
                 We don't just ask
                 <strong>"What's wrong?"</strong>
                 <br>
-                We ask
-                <strong>"How can we make it better?"</strong>
+                We build the system that asks:
+                <strong>"How fast can we solve it together?"</strong>
             </p>
 
             <div class="about-bottom">
                 <span>PROJECT UDAAN</span>
-                <span>2026</span>
+                <span>2026 • JAUNPUR HACK DAY</span>
             </div>
 
         </div>
@@ -246,23 +589,22 @@
 </section>
 
 
-<!-- ================= PROBLEMS ================= -->
-
+<!-- ================= PROBLEMS OVERVIEW ================= -->
 <section class="problems-section" id="problems">
 
     <div class="section-container">
 
         <div class="center-heading">
 
-            <div class="section-label">CAMPUS CHALLENGES</div>
+            <div class="section-label" data-i18n="problems_label">CAMPUS CHALLENGES</div>
 
-            <h2>
+            <h2 data-i18n="problems_title">
                 What students
                 <span>experience.</span>
             </h2>
 
-            <p>
-                Different problems. One campus. One opportunity to improve.
+            <p data-i18n="problems_subtitle">
+                Different problems. One campus. One transparent platform to resolve them.
             </p>
 
         </div>
@@ -273,151 +615,72 @@
             <div class="problem-card" onclick="showProblem('Infrastructure')">
                 <div class="problem-number">01</div>
                 <div class="problem-icon">🏫</div>
-                <h3>Infrastructure</h3>
-                <p>
-                    Classrooms, seating, facilities and campus spaces
-                    need continuous improvement.
+                <h3 data-i18n="cat_infra_title">Infrastructure</h3>
+                <p data-i18n="cat_infra_desc">
+                    Classrooms, seating, fans, washroom fittings and campus spaces
+                    needing continuous audit and repair.
                 </p>
-                <span class="problem-link">Explore issue →</span>
+                <span class="problem-link" data-i18n="card_explore">Explore issue →</span>
             </div>
 
 
             <div class="problem-card" onclick="showProblem('Academic Support')">
                 <div class="problem-number">02</div>
                 <div class="problem-icon">📚</div>
-                <h3>Academic Support</h3>
-                <p>
-                    Students need better academic guidance, resources
-                    and accessible support.
+                <h3 data-i18n="cat_acad_title">Academic Support</h3>
+                <p data-i18n="cat_acad_desc">
+                    Access to course resources, timely syllabus updates,
+                    doubt clearance and faculty advisory hours.
                 </p>
-                <span class="problem-link">Explore issue →</span>
+                <span class="problem-link" data-i18n="card_explore">Explore issue →</span>
             </div>
 
 
             <div class="problem-card" onclick="showProblem('Cleanliness')">
                 <div class="problem-number">03</div>
                 <div class="problem-icon">♻️</div>
-                <h3>Cleanliness</h3>
-                <p>
-                    Cleaner surroundings and smarter waste management
-                    can improve campus life.
+                <h3 data-i18n="cat_clean_title">Cleanliness</h3>
+                <p data-i18n="cat_clean_desc">
+                    Cleaner surroundings, hygienic restrooms and smarter waste management
+                    across campus zones.
                 </p>
-                <span class="problem-link">Explore issue →</span>
+                <span class="problem-link" data-i18n="card_explore">Explore issue →</span>
             </div>
 
 
             <div class="problem-card" onclick="showProblem('Communication')">
                 <div class="problem-number">04</div>
                 <div class="problem-icon">📢</div>
-                <h3>Communication</h3>
-                <p>
-                    Important announcements should reach students
-                    quickly and clearly.
+                <h3 data-i18n="cat_comm_title">Communication</h3>
+                <p data-i18n="cat_comm_desc">
+                    Official notices, timetable changes and university guidelines
+                    reaching students without rumors.
                 </p>
-                <span class="problem-link">Explore issue →</span>
+                <span class="problem-link" data-i18n="card_explore">Explore issue →</span>
             </div>
 
 
             <div class="problem-card" onclick="showProblem('Digital Access')">
                 <div class="problem-number">05</div>
                 <div class="problem-icon">💻</div>
-                <h3>Digital Access</h3>
-                <p>
-                    Better digital systems can make learning and
-                    campus services easier.
+                <h3 data-i18n="cat_digital_title">Digital & WiFi</h3>
+                <p data-i18n="cat_digital_desc">
+                    Campus WiFi reliability, lab terminal access, online fee portal
+                    and seamless student portals.
                 </p>
-                <span class="problem-link">Explore issue →</span>
+                <span class="problem-link" data-i18n="card_explore">Explore issue →</span>
             </div>
 
 
             <div class="problem-card" onclick="showProblem('Campus Environment')">
                 <div class="problem-number">06</div>
                 <div class="problem-icon">🌱</div>
-                <h3>Campus Environment</h3>
-                <p>
-                    A greener, safer and more student-friendly
-                    environment benefits everyone.
+                <h3 data-i18n="cat_env_title">Campus Environment</h3>
+                <p data-i18n="cat_env_desc">
+                    Adequate lighting on walkways, safe night transit, drinking water stations
+                    and green study lawns.
                 </p>
-                <span class="problem-link">Explore issue →</span>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ================= STUDENT VOICES ================= -->
-
-<section class="voices-section">
-
-    <div class="section-container">
-
-        <div class="center-heading">
-            <div class="section-label">STUDENT VOICES</div>
-
-            <h2>
-                Real concerns.
-                <span>Real ideas.</span>
-            </h2>
-        </div>
-
-
-        <div class="voice-cards">
-
-            <div class="voice-card">
-                <div class="voice-top">
-                    <div class="voice-avatar">A</div>
-                    <div>
-                        <strong>Student Voice</strong>
-                        <small>Academic Support</small>
-                    </div>
-                </div>
-
-                <p>
-                    “A centralized place for notes, resources and
-                    academic announcements would make things much easier.”
-                </p>
-
-                <span class="voice-tag">💡 Idea</span>
-            </div>
-
-
-            <div class="voice-card featured-voice">
-
-                <div class="voice-top">
-                    <div class="voice-avatar">S</div>
-                    <div>
-                        <strong>Student Voice</strong>
-                        <small>Campus Environment</small>
-                    </div>
-                </div>
-
-                <p>
-                    “Small changes in our campus environment can make
-                    students feel much more comfortable and connected.”
-                </p>
-
-                <span class="voice-tag">🌱 Suggestion</span>
-            </div>
-
-
-            <div class="voice-card">
-
-                <div class="voice-top">
-                    <div class="voice-avatar">R</div>
-                    <div>
-                        <strong>Student Voice</strong>
-                        <small>Communication</small>
-                    </div>
-                </div>
-
-                <p>
-                    “Important notices should be available on one
-                    simple platform instead of being scattered everywhere.”
-                </p>
-
-                <span class="voice-tag">📢 Concern</span>
+                <span class="problem-link" data-i18n="card_explore">Explore issue →</span>
             </div>
 
         </div>
@@ -427,7 +690,6 @@
 
 
 <!-- ================= CAMPUS PULSE ================= -->
-
 <section class="campus-pulse" id="pulse">
 
     <div class="section-container">
@@ -435,21 +697,21 @@
         <div class="pulse-heading">
 
             <div>
-                <div class="section-label">CAMPUS PULSE</div>
+                <div class="section-label" data-i18n="pulse_label">CAMPUS PULSE</div>
 
-                <h2>
+                <h2 data-i18n="pulse_title">
                     What matters
                     <span>most?</span>
                 </h2>
 
-                <p>
-                    Vote for the issue you believe deserves attention first.
+                <p data-i18n="pulse_subtitle">
+                    Vote for the area you believe deserves administrative attention first.
                 </p>
             </div>
 
             <div class="total-votes">
                 <strong id="totalVotes">0</strong>
-                <span>Total Votes</span>
+                <span data-i18n="pulse_total">Total Votes</span>
             </div>
 
         </div>
@@ -463,7 +725,7 @@
                     <div class="poll-icon">🏫</div>
 
                     <div>
-                        <h3>Infrastructure</h3>
+                        <h3 data-i18n="cat_infra_title">Infrastructure</h3>
                         <span id="infrastructureVotes">0 votes</span>
                     </div>
 
@@ -474,8 +736,7 @@
                     <div id="infrastructureProgress" class="progress"></div>
                 </div>
 
-                <button class="vote-btn"
-                        onclick="vote('infrastructure', this)">
+                <button class="vote-btn" onclick="vote('infrastructure', this)" data-i18n="pulse_vote_btn">
                     Vote for this issue
                 </button>
 
@@ -488,7 +749,7 @@
                     <div class="poll-icon">📚</div>
 
                     <div>
-                        <h3>Academic Support</h3>
+                        <h3 data-i18n="cat_acad_title">Academic Support</h3>
                         <span id="academicsVotes">0 votes</span>
                     </div>
 
@@ -499,8 +760,7 @@
                     <div id="academicsProgress" class="progress"></div>
                 </div>
 
-                <button class="vote-btn"
-                        onclick="vote('academics', this)">
+                <button class="vote-btn" onclick="vote('academics', this)" data-i18n="pulse_vote_btn">
                     Vote for this issue
                 </button>
 
@@ -513,7 +773,7 @@
                     <div class="poll-icon">♻️</div>
 
                     <div>
-                        <h3>Cleanliness</h3>
+                        <h3 data-i18n="cat_clean_title">Cleanliness</h3>
                         <span id="cleanlinessVotes">0 votes</span>
                     </div>
 
@@ -524,8 +784,7 @@
                     <div id="cleanlinessProgress" class="progress"></div>
                 </div>
 
-                <button class="vote-btn"
-                        onclick="vote('cleanliness', this)">
+                <button class="vote-btn" onclick="vote('cleanliness', this)" data-i18n="pulse_vote_btn">
                     Vote for this issue
                 </button>
 
@@ -538,7 +797,7 @@
                     <div class="poll-icon">📢</div>
 
                     <div>
-                        <h3>Communication</h3>
+                        <h3 data-i18n="cat_comm_title">Communication</h3>
                         <span id="communicationVotes">0 votes</span>
                     </div>
 
@@ -549,8 +808,7 @@
                     <div id="communicationProgress" class="progress"></div>
                 </div>
 
-                <button class="vote-btn"
-                        onclick="vote('communication', this)">
+                <button class="vote-btn" onclick="vote('communication', this)" data-i18n="pulse_vote_btn">
                     Vote for this issue
                 </button>
 
@@ -558,8 +816,8 @@
 
         </div>
 
-        <p class="pulse-note">
-            One vote per browser • Prototype demonstration feature
+        <p class="pulse-note" data-i18n="pulse_note">
+            One vote per browser session • Live prototype demonstration feature
         </p>
 
     </div>
@@ -567,22 +825,21 @@
 
 
 <!-- ================= SOLUTION SPOTLIGHT ================= -->
-
 <section class="solution-section" id="solutions">
 
     <div class="section-container">
 
         <div class="center-heading">
 
-            <div class="section-label">SOLUTION SPOTLIGHT</div>
+            <div class="section-label" data-i18n="solution_label">SOLUTION SPOTLIGHT</div>
 
-            <h2>
+            <h2 data-i18n="solution_title">
                 Problem → Idea →
                 <span>Impact.</span>
             </h2>
 
-            <p>
-                UDAAN turns observations into practical possibilities.
+            <p data-i18n="solution_subtitle">
+                UDAAN transforms scattered observations into tracked, institutional action.
             </p>
 
         </div>
@@ -591,12 +848,12 @@
         <div class="solution-flow">
 
             <div class="solution-box problem-box">
-                <span class="solution-label">THE PROBLEM</span>
+                <span class="solution-label" data-i18n="flow_prob_tag">THE PROBLEM</span>
                 <div class="big-icon">⚠️</div>
-                <h3>Scattered Communication</h3>
-                <p>
-                    Students often miss important announcements
-                    because information comes through multiple channels.
+                <h3 data-i18n="flow_prob_title">Scattered Complaints</h3>
+                <p data-i18n="flow_prob_desc">
+                    Students complain on informal WhatsApp groups, so problems never reach authorities,
+                    and there is zero tracking or accountability.
                 </p>
             </div>
 
@@ -605,12 +862,12 @@
 
 
             <div class="solution-box idea-box">
-                <span class="solution-label">THE IDEA</span>
+                <span class="solution-label" data-i18n="flow_idea_tag">THE IDEA</span>
                 <div class="big-icon">💡</div>
-                <h3>One Campus Hub</h3>
-                <p>
-                    Create a single digital space for announcements,
-                    notices, events and student updates.
+                <h3 data-i18n="flow_idea_title">Unified Campus Hub</h3>
+                <p data-i18n="flow_idea_desc">
+                    One simple web portal with unique Ticket IDs, automated departmental assignment,
+                    and interactive AI guidance.
                 </p>
             </div>
 
@@ -619,12 +876,12 @@
 
 
             <div class="solution-box impact-box">
-                <span class="solution-label">THE IMPACT</span>
+                <span class="solution-label" data-i18n="flow_impact_tag">THE IMPACT</span>
                 <div class="big-icon">🚀</div>
-                <h3>Better Connection</h3>
-                <p>
-                    Students stay informed while communication becomes
-                    faster, clearer and more accessible.
+                <h3 data-i18n="flow_impact_title">Transparent Resolutions</h3>
+                <p data-i18n="flow_impact_desc">
+                    Issues get fixed within 24-48 hours with proof of resolution, student ratings,
+                    and real accountability.
                 </p>
             </div>
 
@@ -635,7 +892,6 @@
 
 
 <!-- ================= HOW UDAAN WORKS ================= -->
-
 <section class="process-section">
 
     <div class="section-container">
@@ -643,16 +899,16 @@
         <div class="process-intro">
 
             <div>
-                <div class="section-label">OUR APPROACH</div>
+                <div class="section-label" data-i18n="proc_label">OUR APPROACH</div>
 
-                <h2>
+                <h2 data-i18n="proc_title">
                     Four steps.
                     <span>One Udaan.</span>
                 </h2>
             </div>
 
-            <p>
-                Because meaningful change begins by listening.
+            <p data-i18n="proc_subtitle">
+                Because meaningful change begins with structured listening and verified action.
             </p>
 
         </div>
@@ -663,29 +919,29 @@
             <div class="process-step">
                 <span>01</span>
                 <div>👂</div>
-                <h3>Listen</h3>
-                <p>Hear what students actually experience.</p>
+                <h3 data-i18n="step1_title">Listen</h3>
+                <p data-i18n="step1_desc">Receive structured student feedback and genuine complaints.</p>
             </div>
 
             <div class="process-step">
                 <span>02</span>
                 <div>🔎</div>
-                <h3>Understand</h3>
-                <p>Identify patterns and root causes.</p>
+                <h3 data-i18n="step2_title">Track</h3>
+                <p data-i18n="step2_desc">Generate unique Ticket ID and route to responsible authorities.</p>
             </div>
 
             <div class="process-step">
                 <span>03</span>
                 <div>💡</div>
-                <h3>Ideate</h3>
-                <p>Think of practical and creative solutions.</p>
+                <h3 data-i18n="step3_title">Action</h3>
+                <p data-i18n="step3_desc">Fix the physical or digital issue with verified timelines.</p>
             </div>
 
             <div class="process-step">
                 <span>04</span>
                 <div>🚀</div>
-                <h3>Act</h3>
-                <p>Turn ideas into meaningful action.</p>
+                <h3 data-i18n="step4_title">Verify</h3>
+                <p data-i18n="step4_desc">Close the ticket only when student confirms the resolution.</p>
             </div>
 
         </div>
@@ -694,102 +950,228 @@
 </section>
 
 
-<!-- ================= YOUR VOICE ================= -->
-
+<!-- ================= YOUR VOICE & COMPLAINT SUBMISSION (PRIORITY ⭐⭐⭐⭐⭐) ================= -->
 <section class="voice-form-section" id="voice">
 
     <div class="section-container form-grid">
 
         <div class="form-intro">
 
-            <div class="section-label">YOUR VOICE MATTERS</div>
+            <div class="section-label" data-i18n="form_label">YOUR VOICE MATTERS</div>
 
-            <h2>
-                Have an idea?
-                <span>Let's hear it.</span>
+            <h2 data-i18n="form_heading">
+                Report an Issue
+                <span>or Share an Idea.</span>
             </h2>
 
-            <p>
-                Tell us about a campus problem, suggestion or idea.
-                Your input can become the starting point for change.
+            <p data-i18n="form_intro_desc">
+                Submit a campus grievance or innovative proposal. Get an instant tracking ID
+                to follow up directly until resolution.
             </p>
 
             <div class="form-features">
-                <div>✓ No complicated process</div>
-                <div>✓ Student-focused</div>
-                <div>✓ Ideas → Solutions</div>
+                <div>✓ Instant Ticket Tracking ID generated</div>
+                <div>✓ 100% Confidential / Anonymous option</div>
+                <div>✓ Direct routing to Campus Maintenance & HOD</div>
+                <div>✓ Verified resolution with student sign-off</div>
+            </div>
+
+            <div class="form-sos-prompt">
+                <span class="prompt-icon">🚨</span>
+                <div>
+                    <strong>Is it an urgent safety or medical hazard?</strong>
+                    <p>Use our 1-click emergency contacts immediately.</p>
+                    <button type="button" class="sos-link-btn" onclick="toggleSosModal(true)">Open Emergency Helplines →</button>
+                </div>
             </div>
 
         </div>
 
 
-        <form id="voiceForm" class="voice-form">
+        <!-- Upgraded Grievance / Voice Submission Form -->
+        <div class="form-wrapper-box">
 
-            <label>
-                Your Name
-                <input
-                    type="text"
-                    id="studentName"
-                    placeholder="Optional">
-            </label>
+            <!-- Tab Switcher -->
+            <div class="form-tabs">
+                <button type="button" class="form-tab-btn active" id="tabComplaintBtn" onclick="switchFormTab('complaint')">
+                    📝 Register Complaint
+                </button>
+                <button type="button" class="form-tab-btn" id="tabIdeaBtn" onclick="switchFormTab('idea')">
+                    💡 Share Innovative Idea
+                </button>
+            </div>
 
+            <form id="voiceForm" class="voice-form" onsubmit="handleGrievanceSubmit(event)">
 
-            <label>
-                Category
-                <select id="category" required>
-                    <option value="">Select a category</option>
-                    <option>Infrastructure</option>
-                    <option>Academic Support</option>
-                    <option>Cleanliness</option>
-                    <option>Communication</option>
-                    <option>Digital Access</option>
-                    <option>Campus Environment</option>
-                    <option>Other</option>
-                </select>
-            </label>
+                <!-- Row 1: Student Name & Anonymous Checkbox -->
+                <div class="form-row-2">
+                    <label>
+                        <span data-i18n="lbl_name">Your Name</span>
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="e.g. Rahul Sharma (or leave blank)">
+                    </label>
 
+                    <label>
+                        <span data-i18n="lbl_roll">Student Roll No / ID (Optional)</span>
+                        <input
+                            type="text"
+                            id="studentRoll"
+                            placeholder="e.g. 23BCE1048">
+                    </label>
+                </div>
 
-            <label>
-                Problem / Idea
-                <textarea
-                    id="problemIdea"
-                    maxlength="500"
-                    placeholder="Describe the problem or share your solution idea..."
-                    required></textarea>
+                <div class="anon-check-wrap">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="isAnonymous" onchange="toggleAnonymousMode(this.checked)">
+                        <span class="checkmark"></span>
+                        <span data-i18n="lbl_anon">Submit Anonymously (Hide my identity completely)</span>
+                    </label>
+                </div>
 
-                <small class="character-counter">
-                    0 / 500
-                </small>
-            </label>
+                <!-- Row 2: Category & Urgency -->
+                <div class="form-row-2">
+                    <label>
+                        <span data-i18n="lbl_category">Category *</span>
+                        <select id="category" required onchange="handleCategoryChange(this.value)">
+                            <option value="">Select a category</option>
+                            <option value="Infrastructure">🏫 Infrastructure & Classrooms</option>
+                            <option value="Academic Support">📚 Academic Support & Labs</option>
+                            <option value="Cleanliness">♻️ Cleanliness & Sanitation</option>
+                            <option value="Hostel & Mess">🍲 Hostel & Mess Facilities</option>
+                            <option value="Digital Access">💻 WiFi & Digital Systems</option>
+                            <option value="Campus Security">🛡️ Security & Lighting</option>
+                            <option value="Other">✨ Other Campus Matters</option>
+                        </select>
+                    </label>
 
+                    <label id="urgencyFieldWrap">
+                        <span data-i18n="lbl_urgency">Urgency / Severity Level *</span>
+                        <select id="urgencyLevel" required>
+                            <option value="Normal">🟢 Normal (3-4 Days)</option>
+                            <option value="Medium">🟡 Medium (Within 48h)</option>
+                            <option value="High">🟠 High Priority (Within 24h)</option>
+                            <option value="Critical">🔴 Critical / Safety Hazard (Immediate)</option>
+                        </select>
+                    </label>
+                </div>
 
-            <button type="submit" class="form-submit">
-                Submit Your Voice →
-            </button>
+                <!-- Row 3: Campus Location -->
+                <label>
+                    <span data-i18n="lbl_location">Campus Location / Specific Room *</span>
+                    <input
+                        type="text"
+                        id="issueLocation"
+                        placeholder="e.g. Central Library 2nd Floor, Room 204 Block B, or Hostel 1 Mess"
+                        required>
+                </label>
 
-        </form>
+                <!-- Row 4: Subject Title -->
+                <label>
+                    <span data-i18n="lbl_subject">Issue Title / Subject *</span>
+                    <input
+                        type="text"
+                        id="issueTitle"
+                        placeholder="Brief summary of the issue (e.g. Water cooler leaking in Block A)"
+                        required>
+                </label>
+
+                <!-- Row 5: Detailed Description -->
+                <label>
+                    <span data-i18n="lbl_desc">Detailed Description *</span>
+                    <textarea
+                        id="problemIdea"
+                        maxlength="600"
+                        placeholder="Provide details about what is wrong, when it started, and any suggested solutions..."
+                        required></textarea>
+
+                    <small class="character-counter">
+                        0 / 600
+                    </small>
+                </label>
+
+                <!-- Row 6: Image Attachment Mock Upload -->
+                <div class="file-upload-container">
+                    <span class="upload-label" data-i18n="lbl_photo">Attach Photo Proof (Optional)</span>
+                    <div class="upload-dropzone" onclick="document.getElementById('photoInput').click()">
+                        <div class="dropzone-content">
+                            <span class="upload-icon">📷</span>
+                            <span id="uploadStatusText">Click to select or drag & drop photo proof</span>
+                            <small>PNG, JPG or JPEG up to 5MB</small>
+                        </div>
+                        <input type="file" id="photoInput" accept="image/*" style="display: none;" onchange="handleImageSelection(event)">
+                    </div>
+                    <div id="imagePreviewWrap" class="image-preview-box" style="display: none;">
+                        <img id="imagePreviewImg" src="" alt="Proof Preview">
+                        <button type="button" class="remove-img-btn" onclick="removeSelectedImage()">✕ Remove</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">
+                    <span data-i18n="btn_submit_voice">Submit & Generate Tracking ID →</span>
+                </button>
+
+            </form>
+
+        </div>
 
     </div>
 </section>
 
 
-<!-- ================= TEAM ================= -->
+<!-- ================= TICKET CONFIRMATION MODAL ================= -->
+<div id="ticketSuccessModal" class="udaan-modal-overlay" style="display: none;">
+    <div class="ticket-modal-box">
+        <div class="ticket-modal-icon">🎉</div>
+        <span class="ticket-modal-tag" data-i18n="modal_success_tag">COMPLAINT REGISTERED SUCCESSFULLY</span>
+        <h2 data-i18n="modal_success_title">Your Voice Is Now In Motion!</h2>
+        <p data-i18n="modal_success_desc">
+            Your complaint has been logged into the Project UDAAN institutional system and assigned to the relevant department.
+        </p>
 
+        <div class="ticket-badge-card">
+            <span class="ticket-label" data-i18n="modal_ticket_lbl">YOUR OFFICIAL TRACKING TICKET ID</span>
+            <div class="ticket-id-display">
+                <strong id="modalTicketId">UDN-0000</strong>
+                <button type="button" class="copy-ticket-btn" onclick="copyModalTicketId()" title="Copy Ticket ID">
+                    📋 <span id="copyBtnText">Copy</span>
+                </button>
+            </div>
+            <div class="ticket-meta-info">
+                <span>Estimated Turnaround: <strong id="modalEta">24-48 Hours</strong></span>
+                <span>Assigned: <strong id="modalDept">Campus Maintenance Cell</strong></span>
+            </div>
+        </div>
+
+        <div class="ticket-modal-actions">
+            <button type="button" class="primary-button" onclick="jumpToTrackComplaint()">
+                🔍 Track This Complaint Now →
+            </button>
+            <button type="button" class="secondary-button" onclick="closeTicketModal()">
+                Close & Return
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================= TEAM ================= -->
 <section class="team-section">
 
     <div class="section-container">
 
         <div class="center-heading">
 
-            <div class="section-label">THE TEAM</div>
+            <div class="section-label" data-i18n="team_label">THE INNOVATORS</div>
 
-            <h2>
+            <h2 data-i18n="team_title">
                 Created with
                 <span>purpose.</span>
             </h2>
 
-            <p>
-                Three minds. One idea. A better campus.
+            <p data-i18n="team_subtitle">
+                Built with dedication for Hack Day Jaunpur & Hacktoberfest 2026.
             </p>
 
         </div>
@@ -808,7 +1190,7 @@
                 <div class="team-avatar">D</div>
                 <span>TEAM MEMBER</span>
                 <h3>Divyanshi Yadav</h3>
-                <p>Research • presentation • Strategy</p>
+                <p>Research • Presentation • Strategy</p>
             </div>
 
             <div class="team-card">
@@ -825,7 +1207,6 @@
 
 
 <!-- ================= FINAL CTA ================= -->
-
 <section class="final-cta">
 
     <div class="cta-glow"></div>
@@ -834,18 +1215,23 @@
 
         <div class="cta-content">
 
-            <span class="cta-mini">THE FUTURE STARTS WITH A VOICE</span>
+            <span class="cta-mini" data-i18n="cta_mini">THE FUTURE STARTS WITH A VOICE</span>
 
-            <h2>
-                Don't just notice
+            <h2 data-i18n="cta_heading">
+                Don't just endure
                 the problem.
                 <br>
                 <span>Be part of the solution.</span>
             </h2>
 
-            <a href="#voice" class="cta-button">
-                Share Your Voice ↗
-            </a>
+            <div class="cta-btn-wrap">
+                <a href="#voice" class="cta-button" data-i18n="cta_btn">
+                    Register a Grievance ↗
+                </a>
+                <a href="#tracker" class="cta-secondary-btn" data-i18n="cta_track_btn">
+                    Track Existing Issue
+                </a>
+            </div>
 
         </div>
 
@@ -854,7 +1240,6 @@
 
 
 <!-- ================= FOOTER ================= -->
-
 <footer class="footer">
 
     <div class="section-container footer-grid">
@@ -864,17 +1249,18 @@
                 <span>U</span> UDAAN
             </div>
 
-            <p>
-                From Campus Problems to Solutions.
+            <p data-i18n="footer_motto">
+                From Campus Problems to Solutions • Complete Student Grievance & Tracking Platform.
             </p>
         </div>
 
         <div class="footer-links">
             <a href="#home">Home</a>
-            <a href="#about">About</a>
+            <a href="#tracker">Status Tracker</a>
+            <a href="#campus-map">Campus Map</a>
+            <a href="#dashboard">Dashboard</a>
             <a href="#problems">Problems</a>
-            <a href="#solutions">Solutions</a>
-            <a href="#voice">Your Voice</a>
+            <a href="#voice">Report Issue</a>
         </div>
 
         <div class="footer-credit">
@@ -887,12 +1273,76 @@
     </div>
 
     <div class="footer-bottom">
-        © 2026 Project UDAAN • College Innovation Project
+        © 2026 Project UDAAN • Hack Day Jaunpur / Hacktoberfest Project • Empowering College Campuses
     </div>
 
 </footer>
 
 
+<!-- ================= AI CHATBOT WIDGET (PRIORITY ⭐⭐⭐⭐⭐) ================= -->
+<div class="ai-widget-wrapper" id="aiChatbotWidget">
+
+    <!-- Floating Launcher Button -->
+    <button class="ai-launcher-btn" id="aiLauncherBtn" onclick="toggleAiChatbot()" title="Chat with UDAAN Sahayak AI">
+        <span class="ai-btn-icon">🤖</span>
+        <span class="ai-btn-label">UDAAN Sahayak</span>
+        <span class="ai-pulse-dot"></span>
+    </button>
+
+    <!-- Chat Modal Window -->
+    <div class="ai-chat-window" id="aiChatWindow" style="display: none;">
+        
+        <div class="ai-chat-header">
+            <div class="ai-header-left">
+                <div class="ai-avatar-icon">🤖</div>
+                <div>
+                    <strong data-i18n="ai_name">UDAAN Sahayak AI</strong>
+                    <span class="ai-online-status">● Online • 24/7 Campus Guide</span>
+                </div>
+            </div>
+            <button class="ai-close-btn" onclick="toggleAiChatbot(false)">×</button>
+        </div>
+
+        <!-- Chat Messages Body -->
+        <div class="ai-messages-body" id="aiMessagesBody">
+            <div class="ai-message msg-bot">
+                <div class="msg-bubble">
+                    <p data-i18n="ai_greeting">
+                        Namaste! 🙏 Main <strong>UDAAN Sahayak</strong> hoon. 
+                        Aap mujhse campus complaints, WiFi issues, mess food, hostel timings ya complaint tracking ke baare me pooch sakte hain.
+                    </p>
+                    <small class="msg-time">Just now</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Question Chips -->
+        <div class="ai-quick-chips">
+            <button type="button" class="ai-chip" onclick="sendAiPrompt('WiFi connect nahi ho raha hai')">📶 WiFi issue report</button>
+            <button type="button" class="ai-chip" onclick="sendAiPrompt('Track complaint UDN-1024')">🔍 Track UDN-1024</button>
+            <button type="button" class="ai-chip" onclick="sendAiPrompt('Mess food complaint kaise karein?')">🍲 Mess complaint</button>
+            <button type="button" class="ai-chip" onclick="sendAiPrompt('Campus emergency numbers kya hain?')">🚨 Emergency contacts</button>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form class="ai-input-form" onsubmit="handleAiChatSubmit(event)">
+            <input
+                type="text"
+                id="aiUserInput"
+                placeholder="Ask in Hindi or English (e.g. WiFi issue, track complaint)..."
+                autocomplete="off"
+            >
+            <button type="submit" class="ai-send-btn" title="Send message">
+                ➤
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- Main Application Script -->
 <script src="script.js"></script>
 
 </body>
